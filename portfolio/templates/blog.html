@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1>Blog</h1>
+<div class="row">
+    {% for blog in blogs %}
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ blog.title }}</h3>
+                <p class="card-text">{{ blog.content|slice:":300" }}...</p>
+                <p><small class="text-muted">Di posting tanggal: {{ blog.date_published|date:"F j, Y" }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

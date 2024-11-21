@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Guest Book{% endblock %}
+{% block content %}
+<h1>Guest Book</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="nama" class="form-control mb-3" required>
+    <textarea name="address" placeholder="alamat" class="form-control mb-3" required></textarea>
+    <textarea name="message" placeholder="pesan" class="form-control mb-3" required></textarea>
+    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+</form>
+<h2>Masukan</h2>
+<ul>
+    {% for entry in guest_book %}
+    <li>{{ entry.name }}: {{ entry.message }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
